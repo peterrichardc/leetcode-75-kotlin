@@ -1,0 +1,41 @@
+class Solution {
+    fun reverseVowels(s: String): String {
+        val newWord = StringBuilder(s)
+
+        var leftIndex = 0
+        var rightIndex = newWord.length-1
+
+        while (leftIndex < rightIndex) {
+
+            while (leftIndex < rightIndex && newWord[leftIndex].isVowel().not()) {
+                leftIndex++
+            }
+
+            while (leftIndex < rightIndex && newWord[rightIndex].isVowel().not()) {
+                rightIndex--
+            }
+
+             val currentValue = newWord[leftIndex]
+             newWord[leftIndex] = newWord[rightIndex]
+             newWord[rightIndex] = currentValue
+
+             leftIndex++
+             rightIndex--
+        }
+
+        return newWord.toString()
+    }
+    
+    // Lower-cost alternative compared to setOf; the compiler can optimize direct comparisons more efficiently.
+    private fun Char.isVowel() =
+                this == 'a' ||
+                this == 'e' ||
+                this == 'i' ||
+                this == 'o' ||
+                this == 'u' ||
+                this == 'A' ||
+                this == 'E' ||
+                this == 'I' ||
+                this == 'O' ||
+                this == 'U'
+}
