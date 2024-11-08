@@ -1,0 +1,15 @@
+class Solution {
+    fun reverseWords(s: String): String {
+        val listOfWords = s.trim().split("\\s+".toRegex())
+        val result = StringBuilder()
+        
+        for (i in listOfWords.size - 1 downTo 0) {
+            result.append(listOfWords[i])
+            if (i != 0) {
+                result.append(" ") 
+            }
+        }
+        
+        return result.toString()
+    }
+}
